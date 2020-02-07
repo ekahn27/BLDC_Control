@@ -1,0 +1,6 @@
+23:04:32 **** Incremental Build of configuration Debug for project Algo-TrapControl-2 ****
+make -r all 
+make: Nothing to be done for `all'.
+
+23:04:32 Build Finished (took 136ms)
+

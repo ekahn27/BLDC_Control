@@ -1,0 +1,14 @@
+15:40:13 **** Incremental Build of configuration Debug for project Copy5-adcRom ****
+make -r all 
+Building file: ../src/5adc_rom.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_LPCOPEN -D__LPC15XX__ -D__REDLIB__ -I"C:\Users\Eric\Documents\LPCXpresso\SEM-bldcControl\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\Users\Eric\Documents\LPCXpresso\SEM-bldcControl\lpc_chip_15xx\inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"src/5adc_rom.d" -MT"src/5adc_rom.o" -MT"src/5adc_rom.d" -o "src/5adc_rom.o" "../src/5adc_rom.c"
+../src/5adc_rom.c: In function 'main':
+../src/5adc_rom.c:53:5: error: 'PDRUNCFG' undeclared (first use in this function)
+     PDRUNCFG &= (0<<10);
+     ^
+../src/5adc_rom.c:53:5: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [src/5adc_rom.o] Error 1
+
+15:40:14 Build Finished (took 850ms)
+

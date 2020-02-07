@@ -1,0 +1,118 @@
+/*
+===============================================================================
+ Name        : ADC3.c
+ Author      : $(author)
+ Version     :
+ Copyright   : $(copyright)
+ Description : main definition
+===============================================================================
+*/
+
+#if defined (__USE_LPCOPEN)
+#if defined(NO_BOARD_LIB)
+#include "chip.h"
+#else
+#include "board.h"
+#endif
+#endif
+
+#include <cr_section_macros.h>
+
+// TODO: insert other include files here
+//1.
+    PINASSIGN10(0xFF);//ADC0_PINTRIG0, deselects ADC0_1
+    ADC0_PIN_TRIG0_1(7);
+
+// TODO: insert other definitions and declarations here
+//2.
+#define rom_drivers_ptr (* (ROM **)) 0x03000200
+ADCD_API_T * pAdcApi ; //define pointer to type API function addr table
+ADC_HANDLE_T* adc_handle_0; //handle to ADC0 API
+ADC_PARAM_T param;
+ADC_CONFIG_T adc_cfg;
+#define RAMBLOCK_H 60
+uint32_t start_of_ram_block0[ RAMBLOCK_H ] ;
+#define BUFFER_SIZE 100
+uint32_t adc_buffer[BUFFER_SIZE];
+
+//3.
+pAdcApi = (ADCD_API_T *) (rom_drivers_ptr->pADCD);
+int main(void) {
+#if defined (__USE_LPCOPEN)
+    // Read clock settings and update SystemCoreClock variable
+    SystemCoreClockUpdate();
+#if !defined(NO_BOARD_LIB)
+    // Set up and initialize all required blocks and
+    // functions related to the board hardware
+    Board_Init();
+    // Set the LED to the state of "On"
+    Board_LED_Set(0, true);
+#endif
+#endif
+
+    // TODO: insert code here
+//4.
+   	size_in_bytes = pAdcApi->adc_get_mem_size() ; //size_in_bytes/4 must be
+   	 // < RAMBLOCK_H
+   	adc_handle_0 = pAdcApi->adc_setup(LPC_ADC0_BASE,
+   			(uint8_ *)start_of_ram_block0);
+
+//5.
+   	ADC_CONFIG_T adc_set;
+   	adc_set.system_clock = SYSTEMCLOCK; //system clock
+   	adc_set.adc_clock = ADC_CALIB_CLK; // ADC clock
+
+//6.
+   	pAdcApi->adc_calibration(adc_handle_0, &adc_set);
+
+//7.
+   	adc_set.adc_clock = ADC_ADC_CLK; // this is the ADC clock - in synchronous mode
+   	 //equal to the system clock divided by the CLKDIV value in the CTRL register
+   	// in synchronous mode set system_clock >= adc_clock.
+   	adc_set.async_mode = 0; //async mode disabled
+   	adc_set.tenbit_mode = 0; //10-bit mode disabled
+   	adc_set.lpwr_mode = 0; //low-power mode disabled
+   	adc_set.thr0_low = 0; //threshold disabled
+   	adc_set.thr0_high = 0; //threshold disabled
+   	adc_set.thr1_low = 0; //threshold disabled
+   	adc_set.thr1_high = 0; //threshold disabled
+   	adc_set.error_en = OVR_ENA; //overrun error interrupt disabled
+   	adc_cfg.seqa_ctrl = CHANNELS(0xFFF) | TRIGGER(0x0); //use all 12 channels and
+   	 // trigger # 0
+   	adc_cfg.channel_num = 0xC; // highest channel number is 12
+
+//8.
+   	pAdcApi->adc_init(adc_handle_0, &adc_set);
+
+//9.
+	NVIC_EnableIRQ(ADC0_SEQA_IRQn);
+
+//10.
+	param.driver_mode = 0x01; //interrupt mode.
+	param.seqa_hwtrig = 0x1;
+	param.adc_cfg = (ADC_CONFIG_T *)&adc_cfg;
+	param.buffer = (uint32_t *)adc_buffer;
+	param.comp_flags = 0;
+	param.seqa_callback_pt = adc_seqa_callback;
+
+//11.
+	void adc_seqa_callback( ADC_HANDLE_T handle ) {
+	ADC_DRIVER_TypeDef *driver = (ADC_DRIVER_TypeDef *)handle;
+	ADC_REGS_T *adcr = ((ADC_REGS_T *)((ADC_DRIVER_TypeDef
+	 *)handle)->base_addr);
+	if ((ErrorCode_t)driver->error_code != LPC_OK) {
+	while(1);
+	}
+	adcr->SEQA_CTRL &= ~( ADC_SEQ_ENA ); // stop ADC SEQA now.
+	adcr->INTEN &= ~SEQA_ENA;
+	completiona_tag = 1;
+	}
+
+//12.
+	pAdcApi->adc_seqa_read(adc_handle, &param);
+	while (!completiona_tag); // wait until ADC conversion is complete
+/*   	while(1) {
+
+    }*/
+    return 0 ;
+}

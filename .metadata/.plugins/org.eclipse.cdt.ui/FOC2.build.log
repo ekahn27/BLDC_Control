@@ -1,0 +1,9 @@
+14:34:27 **** Build of configuration Default for project FOC2 ****
+make all 
+Cannot run program "make": Launching failed
+
+Error: Program "make" not found in PATH
+PATH=[C:/nxp/LPCXpresso_8.2.2_650/lpcxpresso/jre/bin/client;C:/nxp/LPCXpresso_8.2.2_650/lpcxpresso/jre/bin;C:/nxp/LPCXpresso_8.2.2_650/lpcxpresso/jre/lib/i386;C:\ProgramData\Anaconda3;C:\ProgramData\Anaconda3\Library\mingw-w64\bin;C:\ProgramData\Anaconda3\Library\usr\bin;C:\ProgramData\Anaconda3\Library\bin;C:\ProgramData\Anaconda3\Scripts;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\MATLAB\R2018b\bin;C:\Users\Eric\AppData\Local\Microsoft\WindowsApps;C:\Users\Eric\AppData\Local\atom\bin;C:\nxp\LPCXpresso_8.2.2_650\lpcxpresso;]
+
+14:34:31 Build Finished (took 4s.767ms)
+

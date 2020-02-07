@@ -1,0 +1,11 @@
+17:01:55 **** Incremental Build of configuration Debug for project periph_sct_pwm ****
+make -r all 
+Building file: ../example/src/sct_pwm.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -D__REDLIB__ -DCORE_M3 -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"example/src/sct_pwm.d" -MT"example/src/sct_pwm.d" -o "example/src/sct_pwm.o" "../example/src/sct_pwm.c"
+../example/src/sct_pwm.c:1:19: fatal error: board.h: No such file or directory
+compilation terminated.
+make: *** [example/src/sct_pwm.o] Error 1
+
+17:01:56 Build Finished (took 361ms)
+

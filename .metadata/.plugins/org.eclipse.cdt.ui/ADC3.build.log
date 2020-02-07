@@ -1,0 +1,128 @@
+10:52:00 **** Incremental Build of configuration Debug for project ADC3 ****
+make -r all 
+Building file: ../src/ADC3.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_LPCOPEN -D__LPC15XX__ -D__REDLIB__ -I"C:\Users\Eric\Documents\LPCXpresso_8.2.2_650\SEM-bldcControl\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\Users\Eric\Documents\LPCXpresso_8.2.2_650\SEM-bldcControl\lpc_chip_15xx\inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"src/ADC3.d" -MT"src/ADC3.o" -MT"src/ADC3.d" -o "src/ADC3.o" "../src/ADC3.c"
+../src/ADC3.c:36:16: error: redefinition of 'struct ADCD_API'
+ typedef struct ADCD_API { // index of ADC driver functions
+                ^
+In file included from C:\Users\Eric\Documents\LPCXpresso_8.2.2_650\SEM-bldcControl\lpc_chip_15xx\inc/romapi_15xx.h:44:0,
+                 from C:\Users\Eric\Documents\LPCXpresso_8.2.2_650\SEM-bldcControl\lpc_chip_15xx\inc/chip.h:158,
+                 from C:\Users\Eric\Documents\LPCXpresso_8.2.2_650\SEM-bldcControl\lpc_board_nxp_lpcxpresso_1549\inc/board.h:35,
+                 from ../src/ADC3.c:14:
+C:\Users\Eric\Documents\LPCXpresso_8.2.2_650\SEM-bldcControl\lpc_chip_15xx\inc/rom_adc_15xx.h:124:16: note: originally defined here
+ typedef struct ADCD_API {
+                ^
+../src/ADC3.c:48:3: error: conflicting types for 'ADCD_API_T'
+ } ADCD_API_T ;
+   ^
+In file included from C:\Users\Eric\Documents\LPCXpresso_8.2.2_650\SEM-bldcControl\lpc_chip_15xx\inc/romapi_15xx.h:44:0,
+                 from C:\Users\Eric\Documents\LPCXpresso_8.2.2_650\SEM-bldcControl\lpc_chip_15xx\inc/chip.h:158,
+                 from C:\Users\Eric\Documents\LPCXpresso_8.2.2_650\SEM-bldcControl\lpc_board_nxp_lpcxpresso_1549\inc/board.h:35,
+                 from ../src/ADC3.c:14:
+C:\Users\Eric\Documents\LPCXpresso_8.2.2_650\SEM-bldcControl\lpc_chip_15xx\inc/rom_adc_15xx.h:142:3: note: previous declaration of 'ADCD_API_T' was here
+ } ADCD_API_T;
+   ^
+../src/ADC3.c: In function 'main':
+../src/ADC3.c:53:29: error: 'ROM' undeclared (first use in this function)
+ #define rom_drivers_ptr (* (ROM **)) 0x03000200
+                             ^
+../src/ADC3.c:92:28: note: in expansion of macro 'rom_drivers_ptr'
+ pAdcApi = &(ADCD_API_T *) (rom_drivers_ptr->pADCD);
+                            ^
+../src/ADC3.c:53:29: note: each undeclared identifier is reported only once for each function it appears in
+ #define rom_drivers_ptr (* (ROM **)) 0x03000200
+                             ^
+../src/ADC3.c:92:28: note: in expansion of macro 'rom_drivers_ptr'
+ pAdcApi = &(ADCD_API_T *) (rom_drivers_ptr->pADCD);
+                            ^
+../src/ADC3.c:53:35: error: expected expression before ')' token
+ #define rom_drivers_ptr (* (ROM **)) 0x03000200
+                                   ^
+../src/ADC3.c:92:28: note: in expansion of macro 'rom_drivers_ptr'
+ pAdcApi = &(ADCD_API_T *) (rom_drivers_ptr->pADCD);
+                            ^
+../src/ADC3.c:98:8: error: 'uint8_' undeclared (first use in this function)
+       (uint8_ *)start_of_ram_block0);
+        ^
+../src/ADC3.c:98:16: error: expected expression before ')' token
+       (uint8_ *)start_of_ram_block0);
+                ^
+../src/ADC3.c:102:28: error: 'SYSTEMCLOCK' undeclared (first use in this function)
+     adc_set.system_clock = SYSTEMCLOCK; //system clock
+                            ^
+../src/ADC3.c:103:25: error: 'ADC_CALIB_CLK' undeclared (first use in this function)
+     adc_set.adc_clock = ADC_CALIB_CLK; // ADC clock
+                         ^
+../src/ADC3.c:109:25: error: 'ADC_ADC_CLK' undeclared (first use in this function)
+     adc_set.adc_clock = ADC_ADC_CLK; // this is the ADC clock - in synchronous mode
+                         ^
+../src/ADC3.c:119:24: error: 'OVR_ENA' undeclared (first use in this function)
+     adc_set.error_en = OVR_ENA; //overrun error interrupt disabled
+                        ^
+../src/ADC3.c:120:25: warning: implicit declaration of function 'CHANNELS' [-Wimplicit-function-declaration]
+     adc_cfg.seqa_ctrl = CHANNELS(0xFFF) | TRIGGER(0x0); //use all 12 channels and
+                         ^
+../src/ADC3.c:120:43: warning: implicit declaration of function 'TRIGGER' [-Wimplicit-function-declaration]
+     adc_cfg.seqa_ctrl = CHANNELS(0xFFF) | TRIGGER(0x0); //use all 12 channels and
+                                           ^
+../src/ADC3.c:136:27: error: 'adc_seqa_callback' undeclared (first use in this function)
+  param.seqa_callback_pt = adc_seqa_callback;
+                           ^
+../src/ADC3.c: In function 'adc_seqa_callback':
+../src/ADC3.c:140:2: error: unknown type name 'ADC_DRIVER_TypeDef'
+  ADC_DRIVER_TypeDef *driver = (ADC_DRIVER_TypeDef *)handle;
+  ^
+../src/ADC3.c:140:32: error: 'ADC_DRIVER_TypeDef' undeclared (first use in this function)
+  ADC_DRIVER_TypeDef *driver = (ADC_DRIVER_TypeDef *)handle;
+                                ^
+../src/ADC3.c:140:52: error: expected expression before ')' token
+  ADC_DRIVER_TypeDef *driver = (ADC_DRIVER_TypeDef *)handle;
+                                                    ^
+../src/ADC3.c:141:2: error: unknown type name 'ADC_REGS_T'
+  ADC_REGS_T *adcr = ((ADC_REGS_T *)((ADC_DRIVER_TypeDef
+  ^
+../src/ADC3.c:141:23: error: 'ADC_REGS_T' undeclared (first use in this function)
+  ADC_REGS_T *adcr = ((ADC_REGS_T *)((ADC_DRIVER_TypeDef
+                       ^
+../src/ADC3.c:141:35: error: expected expression before ')' token
+  ADC_REGS_T *adcr = ((ADC_REGS_T *)((ADC_DRIVER_TypeDef
+                                   ^
+../src/ADC3.c:142:5: error: expected ')' before 'handle'
+   *)handle)->base_addr);
+     ^
+../src/ADC3.c:143:25: error: request for member 'error_code' in something not a structure or union
+  if ((ErrorCode_t)driver->error_code != LPC_OK) {
+                         ^
+../src/ADC3.c:146:6: error: request for member 'SEQA_CTRL' in something not a structure or union
+  adcr->SEQA_CTRL &= ~( ADC_SEQ_ENA ); // stop ADC SEQA now.
+      ^
+../src/ADC3.c:146:24: error: 'ADC_SEQ_ENA' undeclared (first use in this function)
+  adcr->SEQA_CTRL &= ~( ADC_SEQ_ENA ); // stop ADC SEQA now.
+                        ^
+../src/ADC3.c:147:6: error: request for member 'INTEN' in something not a structure or union
+  adcr->INTEN &= ~SEQA_ENA;
+      ^
+../src/ADC3.c:147:18: error: 'SEQA_ENA' undeclared (first use in this function)
+  adcr->INTEN &= ~SEQA_ENA;
+                  ^
+../src/ADC3.c:148:2: error: 'completiona_tag' undeclared (first use in this function)
+  completiona_tag = 1;
+  ^
+../src/ADC3.c: In function 'main':
+../src/ADC3.c:152:25: error: 'adc_handle' undeclared (first use in this function)
+  pAdcApi->adc_seqa_read(adc_handle, &param);
+                         ^
+../src/ADC3.c:153:10: error: 'completiona_tag' undeclared (first use in this function)
+  while (!completiona_tag); // wait until ADC conversion is complete
+          ^
+../src/ADC3.c:95:13: warning: unused variable 'size_in_bytes' [-Wunused-variable]
+    uint32_t size_in_bytes = pAdcApi->adc_get_mem_size() ; //size_in_bytes/4 must be
+             ^
+../src/ADC3.c:86:10: warning: unused variable 'start_of_ram_block0' [-Wunused-variable]
+ uint32_t start_of_ram_block0[ RAMBLOCK_H ] ;
+          ^
+make: *** [src/ADC3.o] Error 1
+
+10:52:01 Build Finished (took 492ms)
+

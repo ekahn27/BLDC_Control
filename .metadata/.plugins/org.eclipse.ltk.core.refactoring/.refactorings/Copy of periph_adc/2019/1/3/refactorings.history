@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Copy of periph_adc/example/src/adc.c&apos; to &apos;Copyadc.c&apos;" description="Rename resource &apos;adc.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="example/src/adc.c" name="Copyadc.c" stamp="1547742500239" updateReferences="true"/>
+</session>

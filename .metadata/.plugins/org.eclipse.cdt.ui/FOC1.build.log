@@ -1,0 +1,6 @@
+12:10:04 **** Incremental Build of configuration Debug for project FOC1 ****
+make -r all 
+make: Nothing to be done for `all'.
+
+12:10:04 Build Finished (took 144ms)
+

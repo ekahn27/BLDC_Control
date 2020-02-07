@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Copy6-adcRom/src/5adc_rom.c&apos; to &apos;6adc_rom.c&apos;" description="Rename resource &apos;5adc_rom.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/5adc_rom.c" name="6adc_rom.c" stamp="1548363095731" updateReferences="true"/>
+</session>

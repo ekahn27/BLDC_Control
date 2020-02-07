@@ -1,0 +1,6 @@
+13:30:54 **** Incremental Build of configuration Debug for project Copy of periph_adc_rom ****
+make -r all 
+make: Nothing to be done for `all'.
+
+13:30:54 Build Finished (took 119ms)
+

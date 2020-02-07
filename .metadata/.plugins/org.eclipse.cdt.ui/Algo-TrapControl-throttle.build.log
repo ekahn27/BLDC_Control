@@ -1,0 +1,18 @@
+21:09:49 **** Incremental Build of configuration Debug for project Algo-TrapControl-throttle ****
+make -r all 
+Building file: ../src/Algo-TrapControl-throttle.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_LPCOPEN -D__LPC15XX__ -D__REDLIB__ -I"C:\Users\Eric\Documents\LPCXpresso\SEM-bldcControl\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\Users\Eric\Documents\LPCXpresso\SEM-bldcControl\lpc_chip_15xx\inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"src/Algo-TrapControl-throttle.d" -MT"src/Algo-TrapControl-throttle.o" -MT"src/Algo-TrapControl-throttle.d" -o "src/Algo-TrapControl-throttle.o" "../src/Algo-TrapControl-throttle.c"
+../src/Algo-TrapControl-throttle.c:149:6: error: redefinition of 'SysTick_Handler'
+ void SysTick_Handler(void){
+      ^
+../src/Algo-TrapControl-throttle.c:98:6: note: previous definition of 'SysTick_Handler' was here
+ void SysTick_Handler(void)
+      ^
+../src/Algo-TrapControl-throttle.c:49:13: warning: 'sequence0Complete' defined but not used [-Wunused-variable]
+ static bool sequence0Complete, sequence1Complete, threshold1Crossed;
+             ^
+make: *** [src/Algo-TrapControl-throttle.o] Error 1
+
+21:09:50 Build Finished (took 505ms)
+
